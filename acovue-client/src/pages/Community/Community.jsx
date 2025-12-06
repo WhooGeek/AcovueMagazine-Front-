@@ -1,8 +1,15 @@
+import { useEffect, useState } from "react";
+import MiniList from "../../components/MiniList/MiniList.jsx"
 export default function Community() {
+
+  const [community, setCommunity] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:8080/api/post/find/all?type=COMMUNITY&limit=5")
+    .then ((res) => res.json())
+    .then ((data) => setCommunity(data.data));
+  },[])
+
   return (
-    <div style={{ padding: "40px" }}>
-      <h1>Community Page</h1>
-      <p>프로젝트 소개 페이지입니다.</p>
-    </div>
+    <MiniList title="Community" items={community} />
   );
 }

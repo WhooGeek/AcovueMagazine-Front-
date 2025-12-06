@@ -1,8 +1,24 @@
+import "./Home.css";
+import News from "../News/News.jsx";
+import Behind from "../Behind/Behind.jsx";
+import Community from "../Community/Community.jsx";
+
+
 export default function Home() {
   return (
-    <div style={{ padding: "40px" }}>
-      <h1>Home Page</h1>
-      <p>Acovue Magazine 프론트엔드 시작!</p>
+    
+    <div className="Home-container">
+      <div className="News-section">
+        <div className="News-header">
+          <h2 className="header-title">NEWS</h2>
+        </div>
+        <div className="News-content">
+          <News />
+          <Behind/>
+          <Community/>
+          
+        </div>
+      </div>
     </div>
   );
 }

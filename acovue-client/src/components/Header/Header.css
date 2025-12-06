@@ -1,0 +1,66 @@
+.header-main-section{
+  background-color: #FFA600;
+  height: 80px;
+  display: flex;
+  
+}
+
+.header-container{
+  display : flex;
+  max-width: 768px;
+  min-width: 768px;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content : space-between;
+  align-items: center;
+}
+
+.header-left,
+.header-right {
+  width: 100px; 
+  text-align: center; 
+}
+
+.header-center {
+  flex-grow: 1; 
+  text-align: center; 
+}
+
+.logoImage{
+  min-width: 1rem;
+  max-width: 6rem;
+  height: 4rem;
+}
+
+.menu-bar{
+  display : flex;
+  border-top: 1px solid black;
+  height: 2.9rem;
+  font-size : 1.3rem;
+  font-weight : bold;
+  background-color: #FFA600;
+  
+}
+
+.menu-bar-container{
+  display : flex;
+  width : 100%;
+  max-width: 768px;
+  min-width: 768px;
+  justify-content : space-between;
+  margin-left:auto;
+  margin-right:auto;
+  align-items: center;
+}
+
+.about{
+  padding: 0 0 0 1rem;
+}
+.community{
+  padding: 0 1rem 0 0;
+}
+
+.about,.community,.community,.news,.review,.behind{
+  color: black
+
+}
