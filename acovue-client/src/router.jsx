@@ -16,6 +16,7 @@ const router = createBrowserRouter([
     path: "/community",
     element: <Community />,
   },
+  
 ]);
 
 export default router;
