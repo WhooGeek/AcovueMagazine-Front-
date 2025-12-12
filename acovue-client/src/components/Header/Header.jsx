@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";  // 반드시 import
 import logoImage from "../../assets/logoImage.png";
 import "./Header.css";
+import menu from "../../assets/menu.png";
+import user from "../../assets/user.png";
 
 export default function Header() {
   return (
@@ -12,7 +14,9 @@ export default function Header() {
 
           {/* 왼쪽: 메뉴 버튼 */}
           <div className="header-left">
-            <button className="menu-button">메뉴</button>
+            <button className="menu-button">
+              <img src={menu} className="menu-icon"/>
+            </button>
           </div>
 
           {/* 중앙: 로고 */}
@@ -24,7 +28,9 @@ export default function Header() {
 
           {/* 오른쪽: 회원 버튼 */}
           <div className="header-right">
-            <button className="member-button">회원</button>
+            <button className="member-button">
+              <img src={user} className="user-icon"/>
+            </button>
           </div>
 
         </div>

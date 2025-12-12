@@ -63,3 +63,25 @@
   color: black;
   text-decoration: none;
 }
+
+.menu-button{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.menu-icon{
+  width: 2rem;
+  height: 2rem;
+}
+
+.member-button{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.user-icon{
+  width: 2rem;
+  height: 2.2rem;
+}
