@@ -39,7 +39,6 @@
   font-size : 1.3rem;
   font-weight : bold;
   background-color: #FFA600;
-  
 }
 
 .menu-bar-container{
@@ -61,6 +60,6 @@
 }
 
 .about,.community,.community,.news,.review,.behind{
-  color: black
-
+  color: black;
+  text-decoration: none;
 }

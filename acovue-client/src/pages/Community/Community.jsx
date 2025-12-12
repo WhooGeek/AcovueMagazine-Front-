@@ -10,6 +10,6 @@ export default function Community() {
   },[])
 
   return (
-    <MiniList title="Community" items={community} />
+    <MiniList title="COMMUNITY" items={community} />
   );
 }

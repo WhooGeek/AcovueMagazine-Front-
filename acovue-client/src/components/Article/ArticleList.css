@@ -1,0 +1,14 @@
+.article-title{
+    border-left: 0.3rem solid #FFA600;
+    padding-left: 0.6rem;
+    margin-bottom: 0.3rem;
+}
+
+.article-container{
+    height: 20rem;
+}
+
+.article-image{
+    margin: 1.5rem 0 0 0;
+    
+}

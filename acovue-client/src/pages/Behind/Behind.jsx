@@ -11,6 +11,6 @@ export default function Behind(){
     }, [])
 
     return(
-        <ArticleList title="Behind" items={behinds} />
+        <ArticleList title="BEHIND" items={behinds} />
     )
 }

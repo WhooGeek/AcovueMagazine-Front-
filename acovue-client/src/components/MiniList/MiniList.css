@@ -1,0 +1,16 @@
+.list-title{
+    border-left: 0.3rem solid #FFA600;
+    padding-left: 0.6rem;
+    margin-bottom: 0.3rem;
+}
+
+.content-container{
+    margin: 1.5rem 0 6rem 1.3rem;
+    
+}
+
+.content-box{
+    display:flex;
+    margin-top: 1rem;
+    justify-content: space-between;
+}

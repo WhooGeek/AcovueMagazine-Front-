@@ -11,6 +11,6 @@ export default function News() {
   }, []);
 
   return (
-    <ArticleList title="News" items={news} />
+    <ArticleList title="NEWS" items={news} />
   );
 }

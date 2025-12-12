@@ -1,0 +1,55 @@
+.footer-main-container{
+    padding: 2rem 0 2rem 0;
+    background-color: #FFA600;
+}
+
+.footer-container{
+    max-width : 768px;
+    min-width : 400px;
+    margin-left : auto;
+    margin-right : auto;
+    padding: 0 0 0 2rem;
+    display:flex;
+    flex-direction: column;
+}
+
+.footer-content,
+.footer-title,
+.footer-copyright{
+    text-align: center;
+}
+
+.footer-content{
+    font-size:1rem;
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+}
+
+.footer-title{
+    font-size:1.3rem;
+    font-weight: 1000;
+    letter-spacing: +0.08rem;
+    margin-bottom: 1rem;
+}
+
+.footer-copyright{
+    font-weight: 400;
+}
+
+.footer-icon-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:0.7rem;
+    margin-bottom: 0.7rem;
+}
+
+.footer-logoImage-youtube{
+    width: 1.4rem;
+    height: 1.7rem;
+}
+
+.footer-logoImage-insta{
+    width: 1.3rem;
+    height: 1.3rem;
+}

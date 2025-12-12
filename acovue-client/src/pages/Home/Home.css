@@ -1,15 +1,12 @@
-.Home-container{
-    display: flex;
+.home-container{
     max-width : 768px;
-    min-width : 768px;
+    min-width : 400px;
     margin-left : auto;
     margin-right : auto;
     padding: 0 0 0 2rem;
-    
 }
 
-.header-title{
-    border-left: 0.3rem solid #FFA600;
-    padding-left: 0.6rem;
-    margin-bottom: 0.3rem;
+.content-section{
+    margin-top: 2rem;
 }
+
