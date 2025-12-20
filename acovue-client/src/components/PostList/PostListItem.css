@@ -1,0 +1,47 @@
+.post-item-link{
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.post-item{
+     margin-bottom:1.5rem;
+}
+
+.post-item-image-container{
+    display:flex;
+    background-color:#e0e0e0;
+    width: auto;
+    height: 25rem;
+    align-items: center;
+    justify-content: center;
+    
+
+}
+
+.post-item-title-container{
+    margin-top:0.8rem;
+}
+
+.post-item-category{
+    width:auto;
+    background-color: #FFA600;
+    font-size: 14px;
+    color: #ffff;
+    padding: 0.15rem 0.5rem 0.15rem 0.5rem;
+    border-radius: 4px;
+    margin-left: 1.5rem;
+}
+
+.post-item-title{
+    margin-left: 1.5rem;
+    margin-top:0.5rem;
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+.post-item-meta-container{
+    display:flex;
+    margin-left:1.5rem;
+    gap:1rem;
+}
