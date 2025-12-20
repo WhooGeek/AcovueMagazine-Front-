@@ -1,5 +1,9 @@
 import client from "./client";
 
+// 포스트 리스트 조회
+export const getPostList = (limit, page, type) =>
+  client.get(`/api/post/find/all?limit=${limit}&page=${page}&type=${type}`);
+
 // 포스트 상세 조회
 export const getPostDetail = (postId) =>
   client.get(`/api/post/find/${postId}`);
