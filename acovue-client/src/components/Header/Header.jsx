@@ -40,10 +40,10 @@ export default function Header() {
       <nav className="menu-bar">
         <div className="menu-bar-container">
           <Link to="/about_me" className="about">ABOUT</Link>
-          <Link to="/news" className="news">NEWS</Link>
-          <Link to="/behind" className="behind">BEHIND</Link>
+          <Link to="/news?page=1&limit=5&type=NEWS" className="news">NEWS</Link>
+          <Link to="/behind?page=1&limit=5&type=BEHIND" className="behind">BEHIND</Link>
           <Link to="/review" className="review">REVIEW</Link>
-          <Link to="/community" className="community">COMMUNITY</Link>
+          <Link to="/community?page=1&limit=10&type=COMMUNITY" className="community">COMMUNITY</Link>
         </div>
       </nav>
 
