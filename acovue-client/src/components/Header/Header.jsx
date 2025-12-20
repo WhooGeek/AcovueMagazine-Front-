@@ -39,7 +39,7 @@ export default function Header() {
       {/* 2. 하단 메뉴바 */}
       <nav className="menu-bar">
         <div className="menu-bar-container">
-          <Link to="/about" className="about">ABOUT</Link>
+          <Link to="/about_me" className="about">ABOUT</Link>
           <Link to="/news" className="news">NEWS</Link>
           <Link to="/behind" className="behind">BEHIND</Link>
           <Link to="/review" className="review">REVIEW</Link>

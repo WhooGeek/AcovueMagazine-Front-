@@ -1,8 +1,27 @@
+import { useEffect, useState } from "react";
+import { getAboutMeContent } from "../../api/AboutMe.api";
+import AboutMeDetail from "../../components/AboutMe/AboutMeDetail";
+
 export default function About() {
+
+  const [post, setPost] = useState(null);
+
+  useEffect(() => {
+    getAboutMeContent()
+    .then((res) => {
+      console.log("API 응답:", res.data);
+      setPost(res.data.data);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+  },[]);
+
+  if(!post) return <div> loading...</div>;
+
   return (
-    <div style={{ padding: "40px" }}>
-      <h1>About Page</h1>
-      <p>프로젝트 소개 페이지입니다.</p>
+    <div>
+      <AboutMeDetail post={post}/>
     </div>
   );
 }

@@ -1,8 +1,9 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import Header from "./components/Header/Header.jsx";
 import Home from "./pages/Home/Home.jsx";
-import Footer from "./components/Footer/Footer.jsx"
-import router from "./router";
+import Footer from "./components/Footer/Footer.jsx";
+import AppRouter from "./Approuter.jsx";
+
 
 function App() {
   return (
@@ -11,9 +12,7 @@ function App() {
 
       <main className="body">
         <div className="body-container">
-          <Routes>
-            <Route path="/" element={<Home />} />
-          </Routes>
+          <AppRouter />
         </div>
       </main>
 

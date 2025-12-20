@@ -1,0 +1,15 @@
+.aboutmeContainer{
+    max-width : 768px;
+    min-width : 400px;
+    margin-left : auto;
+    margin-right : auto;
+    
+    
+    padding: 0 2.5rem 0 2.5rem;
+    display:flex;
+    flex-direction: column;
+    margin-top:3rem;
+    margin-bottom: 3rem;
+}
+
+

@@ -1,0 +1,18 @@
+.post-title {
+    border-left: 0.3rem solid #FFA600;
+    padding-left: 0.6rem;
+    margin-bottom: 0.5rem;
+    margin-top:4rem;
+    font-size: 30px;
+    font-weight : bold;
+}
+
+.post-under-title{
+    display:flex;
+    gap:1.2rem;
+    margin-bottom:2rem;
+    margin-left:1rem;
+    font: #FFa600;
+    color:878787;
+}
+
