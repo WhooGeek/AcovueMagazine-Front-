@@ -28,9 +28,12 @@ export default function Header() {
 
           {/* 오른쪽: 회원 버튼 */}
           <div className="header-right">
-            <button className="member-button">
-              <img src={user} className="user-icon"/>
-            </button>
+            {/* 버튼 전체를 Link로 감쌉니다 */}
+            <Link to="/Login">
+              <button className="member-button">
+                <img src={user} className="user-icon" alt="user" />
+              </button>
+            </Link>
           </div>
 
         </div>

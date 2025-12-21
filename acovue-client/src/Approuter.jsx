@@ -4,9 +4,10 @@ import About from "./pages/About/About";
 import NewsListPage from "./pages/News/NewsListPage";
 import BehindListPage from "./pages/Behind/BehindListPage"
 import CommunityListPage from "./pages/Community/CommunityListPage";
-import NewsDetailPage from "./pages/News/NewsDetailPage"
-import BehindDetailpage from "./pages/Behind/BehindDetailPage"
-import CommunityDetailPage from "./pages/Community/CommunityDetailPage"
+import NewsDetailPage from "./pages/News/NewsDetailPage";
+import BehindDetailpage from "./pages/Behind/BehindDetailPage";
+import CommunityDetailPage from "./pages/Community/CommunityDetailPage";
+import LoginPage from "./pages/Login/LoginPage";
 
 export default function AppRouter() {
     return (
@@ -19,6 +20,7 @@ export default function AppRouter() {
             <Route path="/news/:postId/" element={<NewsDetailPage />} />
             <Route path="/behind/:postId/" element={<BehindDetailpage/>} />
             <Route path="/community/:postId/" element={<CommunityDetailPage/>} />
+            <Route path="/login" element={<LoginPage/>}/>
         </Routes>
     )
 }
