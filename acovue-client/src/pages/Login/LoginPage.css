@@ -1,0 +1,106 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 100px);
+  padding: 20px;
+  background-color: #fff;
+}
+
+.login-box {
+  width: 100%;
+  max-width: 400px; /* 모바일 웹 표준 폭 */
+  text-align: center;
+}
+
+.login-logo {
+  font-size: 28px;
+  font-weight: 800;
+  color: #FFA600;; 
+  margin-bottom: 8px;
+}
+
+.login-subtitle {
+  color: #666;
+  font-size: 15px;
+  margin-bottom: 32px;
+}
+
+/* 입력창 스타일 */
+.login-input {
+  width: 100%;
+  height: 52px;
+  padding: 0 16px;
+  margin-bottom: 12px;
+  border: 1px solid #e1e1e1;
+  border-radius: 8px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.login-input:focus {
+  outline: none;
+  border-color: #FFA600;;
+}
+
+/* 로그인 버튼 */
+.login-submit-btn {
+  width: 100%;
+  height: 52px;
+  background-color: #FFA600;;
+  color: black;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+/* 하단 옵션 */
+.login-options {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #888;
+}
+
+.divider {
+  margin: 0 10px;
+  color: #eee;
+}
+
+/* 소셜 로그인 구분선 */
+.social-divider {
+  margin: 40px 0 24px;
+  position: relative;
+  border-top: 1px solid #eee;
+}
+
+.social-divider span {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  padding: 0 12px;
+  font-size: 13px;
+  color: #bbb;
+}
+
+/* 소셜 버튼 공통 */
+.social-btn {
+  width: 100%;
+  height: 52px;
+  border-radius: 8px;
+  border: 1px solid #eee;
+  margin-bottom: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.kakao { background-color: #fee500; border: none; color: #3c1e1e; }
+.google { background-color: #fff; color: #757575; }
