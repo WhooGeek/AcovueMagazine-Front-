@@ -9,7 +9,6 @@ export default function About() {
   useEffect(() => {
     getAboutMeContent()
     .then((res) => {
-      console.log("API 응답:", res.data);
       setPost(res.data.data);
     })
     .catch((err) => {

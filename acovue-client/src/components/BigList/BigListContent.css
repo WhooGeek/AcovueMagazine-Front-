@@ -1,0 +1,96 @@
+/* BigListContent.css */
+
+/* 1. 링크 기본 스타일 제거 */
+.big-list-item-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    border-bottom: 1px solid #f2f2f2; /* 항목 사이 구분선 */
+    transition: background-color 0.2s;
+}
+
+.big-list-item-link:hover {
+    background-color: #fafafa; /* 마우스 올렸을 때 살짝 변함 */
+}
+
+/* 2. 전체 아이템 컨테이너 (Flex 설정) */
+.big-list-item {
+    display: flex;
+    padding: 20px 0;
+    flex-direction: row-reverse; /* 이미지를 오른쪽으로 보내기 위해 순서 반전 */
+    justify-content: bwtween;
+    align-items: flex-start;
+    gap: 24px;
+}
+
+/* 3. 텍스트 영역 (왼쪽 - 이미지 제외한 나머지 꽉 채우기) */
+.big-list-item-title-container,
+.big-list-item-meta-container {
+    flex: 1;
+}
+
+/* 텍스트들을 감싸는 가상의 박스가 있다면 관리하기 편하지만, 
+   현재 구조에서는 각 컨테이너에 flex: 1을 주어 공간을 확보합니다. */
+
+/* 4. 카테고리 뱃지 */
+.big-list-item-category {
+    display: inline-block;
+    background-color: #f3f4f6;
+    color: #6b7280;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+/* 5. 제목 스타일 */
+.big-list-item-title {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.5;
+    color: #1f2937;
+    margin-bottom: 12px;
+    /* 제목이 너무 길면 2줄까지만 노출 */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* 6. 메타 정보 (작성자, 날짜) */
+.big-list-item-meta-container {
+    display: flex;
+    gap: 12px;
+    font-size: 13px;
+    color: #9ca3af;
+}
+
+/* 7. 이미지 컨테이너 (오른쪽 고정 크기) */
+.big-list-item-image-container {
+    width: 120px;
+    height: 80px;
+    flex-shrink: 0; /* 이미지 크기 유지 */
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #f9fafb;
+}
+
+.big-list-item-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 8. 이미지가 없을 때 회색 박스 */
+.no-image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e5e7eb;
+    color: #9ca3af;
+    font-size: 12px;
+    text-transform: uppercase;
+}
