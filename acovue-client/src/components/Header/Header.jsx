@@ -1,10 +1,60 @@
-import { Link } from "react-router-dom";  // 반드시 import
+import React, { use } from "react";
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom"; 
 import logoImage from "../../assets/logoImage.png";
 import "./Header.css";
 import menu from "../../assets/menu.png";
 import user from "../../assets/user.png";
+import { putLogout } from "../../api/Login.api";
 
 export default function Header() {
+
+  const navigate = useNavigate();
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // 로그인 상태 관리
+  const [showDropdown, setShowDropdown] = useState(false); // 드롭다운 메뉴 표시 상태 관리
+  const [showModal, setShowModal] = useState(false); // 로그아웃 모달 표시 상태 관리
+
+  useEffect(() => {
+    const token = localStorage.getItem("accessToken");
+    if(token){
+      setIsLoggedIn(true);
+    } else{
+      setIsLoggedIn(false);
+    }
+  }, []);
+
+  const handleUserIconClick = () => {
+    if(isLoggedIn){
+      setShowDropdown(!showDropdown); // 드롭다운 메뉴 토글
+    } else{
+      navigate("/login");
+    }
+  };
+
+  //유저 아이콘 핸들러
+  const handleLogoutClick = () => {
+    setShowDropdown(false); // 드롭다운 닫기
+    setShowModal(true); // 모달 열기
+  };
+
+  // 로그아웃 로직
+  const handleConfirmLogout = async () =>{
+    try{
+      await putLogout();
+
+    } catch (error){
+      console.error("Logout failed:", error);
+    }finally{
+      localStorage.removeItem("accessToken");
+
+      setIsLoggedIn(false);
+      setShowModal(false);
+
+      window.location.href = "/";
+    }
+  }
+
   return (
     <header className="Header" >
 
@@ -27,15 +77,26 @@ export default function Header() {
           </div>
 
           {/* 오른쪽: 회원 버튼 */}
-          <div className="header-right">
-            {/* 버튼 전체를 Link로 감쌉니다 */}
-            <Link to="/Login">
-              <button className="member-button">
-                <img src={user} className="user-icon" alt="user" />
-              </button>
-            </Link>
+          <div className="header-right" style={{ position: "relative" }}>   
+            <button className="member-button" onClick={handleUserIconClick}>
+              <img src={user} className="user-icon" alt="user" />
+            </button>
+            {isLoggedIn && showDropdown &&(
+              <div className="dropdown-menu">
+                
+                <Link
+                  to="/mypage"
+                  className="dropdown-item"
+                  onClick={() => setShowDropdown(false)}
+                >
+                마이페이지
+                </Link>
+                <button className="dropdown-item" onClick={handleLogoutClick}>
+                  로그아웃
+                </button>
+              </div>
+            )}
           </div>
-
         </div>
       </div>
 
@@ -49,6 +110,24 @@ export default function Header() {
           <Link to="/community?page=1&limit=10&type=COMMUNITY" className="community">COMMUNITY</Link>
         </div>
       </nav>
+
+      {/* 로그아웃 확인 모달 */}
+      {showModal && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <img src={logoImage} alt="Acovue Logo" className="modal-logo" />
+            <p className="modal-message">로그아웃 하시겠습니까?</p>
+            <div className="modal-buttons">
+              <button className="btn-confirm" onClick={handleConfirmLogout}>
+                확인
+              </button>
+              <button className="btn-cancel" onClick={() => setShowModal(false)}>
+                취소
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
     </header>
   );

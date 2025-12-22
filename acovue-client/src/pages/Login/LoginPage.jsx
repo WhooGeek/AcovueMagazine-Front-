@@ -19,10 +19,9 @@ export default function LoginPage() {
             
             if(response.data && response.data.accessToken) {
 
-                alert("로그인 성공!");
                 const token = response.data.accessToken;
                 localStorage.setItem("accessToken", token);
-                navigate("/");
+                window.location.href = "/";
 
             }
         } catch(error){
