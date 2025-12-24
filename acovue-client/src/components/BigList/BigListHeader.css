@@ -1,3 +1,15 @@
+.community-header-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-items: center;
+    max-width: 768px;
+    min-width: 768px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1rem 0;
+}
+
 .community-header-title{
     border-left: 0.3rem solid #FFA600;
     padding-left: 0.6rem;
