@@ -40,7 +40,7 @@ const NewsCreatePage = () => {
 
     return (
         <div className="create-page-container">
-            <h1>뉴스 작성</h1>
+            <h1>News 작성</h1>
             
             {/* 제목 입력 칸 */}
             <div className="create-page-title-input-container">
