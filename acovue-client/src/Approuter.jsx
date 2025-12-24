@@ -9,6 +9,8 @@ import BehindDetailpage from "./pages/Behind/BehindDetailPage";
 import CommunityDetailPage from "./pages/Community/CommunityDetailPage";
 import LoginPage from "./pages/Login/LoginPage";
 import NewsCreatePage from "./pages/News/NewsCreatePage";
+import BehindCreatePage from "./pages/Behind/BehindCreatePage";
+import CommunityCreatePage from "./pages/Community/CommunityCreatePage";
 
 export default function AppRouter() {
     return (
@@ -22,6 +24,8 @@ export default function AppRouter() {
             <Route path="/behind/:postId/" element={<BehindDetailpage/>} />
             <Route path="/community/:postId/" element={<CommunityDetailPage/>} />
             <Route path="/news/create" element={<NewsCreatePage/>}/>
+            <Route path="/behind/create" element={<BehindCreatePage/>}/>
+            <Route path="/community/create" element={<CommunityCreatePage/>}/>
             <Route path="/login" element={<LoginPage/>}/>
         </Routes>
     )
