@@ -42,10 +42,12 @@ export const postCreatePost = (postData) => {
 };
 
 // 포스트 수정
-export const putUpdatePost = (postId, postTitle, postContent) => {
-  return client.put(`/api/post/update/${postId}`, {
-    postTitle,
-    postContent
-  });
+export const putUpdatePost = (postId, data) => {
+  return client.put(`/api/post/update/${postId}`, data);
+};
+
+// 포스트 삭제
+export const deletePost = (postId) => {
+  return client.delete(`/api/post/delete/${postId}`);
 }
 
