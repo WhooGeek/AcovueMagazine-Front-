@@ -1,5 +1,5 @@
 import "./BigListHeader.css"
-import CommonWriteButton from "../Common/CommonWriteButton";
+import PostWriteButton from "../Common/PostWriteButton";
 
 export default function BigListHeader(){
     return(
@@ -7,7 +7,7 @@ export default function BigListHeader(){
             <div className="community-header-title">
                 Community
             </div>
-            <CommonWriteButton/>
+            <PostWriteButton/>
         </div>
     )
 }
