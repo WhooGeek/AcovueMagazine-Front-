@@ -2,6 +2,8 @@ import { useSearchParams } from "react-router-dom"
 import { useEffect, useState } from "react";
 import PostListView from "../../components/PostList/PostListView"
 import { getPostList } from "../../api/Post.api"
+import PostWriteButton from "../../components/Common/PostWriteButton";
+import "./BehindListPage.css";
 
 export default function BehindListPage(){
     const [searchParams] = useSearchParams();
@@ -21,9 +23,15 @@ export default function BehindListPage(){
     if (!postList) <div>loading...</div>
 
     return(
-        <PostListView
-            postList={postList}
-        />
+        <div>
+            <div className="behind-header">
+                <div className="behind-listpage-title">BEHIND</div> 
+                <PostWriteButton/>
+            </div>
+            <PostListView
+                postList={postList}
+            />
+        </div>
     )
 
 }

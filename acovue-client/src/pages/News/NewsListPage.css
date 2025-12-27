@@ -1,4 +1,4 @@
-.community-header-container{
+.news-header{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -10,10 +10,12 @@
     padding: 1rem 0;
 }
 
-.community-header-title{
+.news-listpage-title{
+    font-size:1.5rem;
+    font-weight: 800;
+    color: #333;
     border-left: 0.3rem solid #FFA600;
     padding-left: 0.6rem;
-    margin-bottom: 0.3rem;
-    font-size:1.5rem;
-    font-weight: bold;
+
 }
+

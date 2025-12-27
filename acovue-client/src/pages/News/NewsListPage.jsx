@@ -2,6 +2,9 @@ import { useSearchParams } from "react-router-dom"
 import { useEffect, useState } from "react";
 import PostListView from "../../components/PostList/PostListView"
 import { getPostList } from "../../api/Post.api"
+import PostWriteButton from "../../components/Common/PostWriteButton";
+import "./NewsListPage.css";
+
 
 export default function NewsListPage(){
     const [searchParams] = useSearchParams();
@@ -21,9 +24,13 @@ export default function NewsListPage(){
     if (!postList) <div>loading...</div>
 
     return(
-        <PostListView
-            postList={postList}
-        />
-    )
+        <div>
+            <div className="news-header">
+                <div className="news-listpage-title">NEWS</div> 
+                <PostWriteButton/>
+            </div>
+            <PostListView postList={postList} title="NEWS"/>
+        </div>
+    );
 
 }

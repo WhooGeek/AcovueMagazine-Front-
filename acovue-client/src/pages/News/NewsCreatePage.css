@@ -1,0 +1,33 @@
+.create-page-container{
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.create-page-title-input{
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.create-page-title-input-container{
+    margin-bottom: 20px;
+    display: flex
+}
+
+.common-write-btn-wrapper{
+    margin-top: 20px;
+    text-align: right;
+}
+
+.common-write-btn{
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}

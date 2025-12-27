@@ -1,18 +1,62 @@
+/* 1. 게시물 제목 (기존 스타일 유지) */
 .post-title {
-    border-left: 0.3rem solid #FFA600;
-    padding-left: 0.6rem;
-    margin-bottom: 0.5rem;
-    margin-top:4rem;
-    font-size: 30px;
-    font-weight : bold;
+  border-left: 0.3rem solid #FFA600;
+  padding-left: 0.6rem;
+  margin-bottom: 0.5rem;
+  margin-top: 4rem;
+  font-size: 30px;
+  font-weight: bold;
 }
 
-.post-under-title{
-    display:flex;
-    gap:1.2rem;
-    margin-bottom:2rem;
-    margin-left:1rem;
-    font: #FFa600;
-    color:878787;
+/* 2. 제목 아래 영역 (수정됨) */
+.post-under-title {
+  display: flex;
+  justify-content: space-between; /* 핵심: 내용(왼쪽)과 버튼(오른쪽)을 양 끝으로 밀어내기 */
+  align-items: center;            /* 수직 중앙 정렬 */
+  margin-bottom: 2rem;
+  margin-left: 1rem;
+  color: #878787;                 /* 색상 코드 # 추가하여 수정 */
 }
 
+/* 3. 작성자/작성일 텍스트 묶음 (새로 추가) */
+/* 닉네임과 날짜가 가로로 나란히 나오도록 설정 */
+.post-under-title-text {
+  display: flex;
+  gap: 1.2rem; /* 기존에 있던 gap을 여기로 가져옴 */
+}
+
+/* 4. 버튼 묶음 (새로 추가) */
+.post-under-title-edit {
+  display: flex;
+  gap: 8px; /* 버튼 사이의 간격 */
+}
+
+/* 5. 버튼 공통 스타일 (심플하고 깔끔하게) */
+.post-edit-button,
+.post-delete-button {
+  padding: 6px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  background-color: transparent; /* 배경 투명 */
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  color: #666;
+  transition: all 0.2s;
+}
+
+/* 수정 버튼 호버 시 효과 */
+.post-edit-button:hover {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+/* 삭제 버튼 스타일 (약간의 포인트) */
+.post-delete-button {
+  color: #FFA600;
+  border-color: #ffc9c9;
+}
+
+.post-delete-button:hover {
+  background-color: #fff5f5;
+  border-color: #FFA600;
+}

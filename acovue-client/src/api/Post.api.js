@@ -35,3 +35,19 @@ export const deleteCommentDetail = (postId, commentSeq) =>
 // 댓글 좋아요 토글
 export const postCommentLikeToggle = (commentSeq, userSeq) =>
   client.post(`/api/like/comment/${commentSeq}/${userSeq}`);
+
+// 포스트 등록
+export const postCreatePost = (postData) => {
+  return client.post(`/api/post/create`, postData);
+};
+
+// 포스트 수정
+export const putUpdatePost = (postId, data) => {
+  return client.put(`/api/post/update/${postId}`, data);
+};
+
+// 포스트 삭제
+export const deletePost = (postId) => {
+  return client.delete(`/api/post/delete/${postId}`);
+}
+

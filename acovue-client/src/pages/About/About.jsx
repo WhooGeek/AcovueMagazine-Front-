@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import { getAboutMeContent } from "../../api/AboutMe.api";
 import AboutMeDetail from "../../components/AboutMe/AboutMeDetail";
+import AboutMeFooter from "../../components/AboutMe/AboutMeFooter";
 
 export default function About() {
 
   const [post, setPost] = useState(null);
+
+  
 
   useEffect(() => {
     getAboutMeContent()
@@ -21,6 +24,7 @@ export default function About() {
   return (
     <div>
       <AboutMeDetail post={post}/>
+      <AboutMeFooter />
     </div>
   );
 }
