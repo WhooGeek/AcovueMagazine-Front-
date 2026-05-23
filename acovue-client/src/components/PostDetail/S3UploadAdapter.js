@@ -15,8 +15,10 @@ export default class S3UploadAdapter {
 
                     postImageUpload(formData)
                         .then((res) => {                            
-                            const url = res.data.data.imageUrl;                            
-                            this.setImageUrls((prev) => [...prev, url]);
+                            const url = res.data.data.imageUrl;       
+                            if(typeof this.setImageUrls === 'function'){
+                                this.setImageUrls((prev) => [...prev, url]);
+                            }
                             resolve({ default: url });
                         })
                         .catch((err) => {
