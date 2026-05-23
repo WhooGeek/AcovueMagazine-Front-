@@ -1,3 +1,10 @@
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
+
+
 export default async function handler(req, res) {
   // Vercel 환경변수에서 EC2 주소 가져오기 (브라우저엔 노출 X)
   const backendUrl = process.env.EC2_API_URL;
@@ -28,8 +35,8 @@ export default async function handler(req, res) {
 
     // POST 요청 등 데이터(body)가 있을 때도 그대로 전달되게 처리
     if (req.method !== 'GET' && req.method !== 'HEAD') {
-      options.body = JSON.stringify(req.body);
-      options.headers["content-type"] = "application/json";
+      options.body = req;
+      options.duplex = "ha lf";
     }
 
     // Vercel 서버가 EC2로 대신 통신
