@@ -36,7 +36,7 @@ export default async function handler(req, res) {
     // POST 요청 등 데이터(body)가 있을 때도 그대로 전달되게 처리
     if (req.method !== 'GET' && req.method !== 'HEAD') {
       options.body = req;
-      options.duplex = "ha lf";
+      options.duplex = "half";
     }
 
     // Vercel 서버가 EC2로 대신 통신
