@@ -14,8 +14,10 @@ export default function AdminLoginPage() {
       const response = await postLogin(email, password);
 
       if (response.data && response.data.accessToken) {
-        const token = response.data.accessToken;
-        localStorage.setItem("accessToken", token);
+        const accesstoken = response.data.accessToken;
+        const refreshToken = response.data.refreshToken;
+        localStorage.setItem("accessToken", accesstoken);
+        localStorage.setItem("refreshToken", refreshToken);
         window.location.href = "/";
       }
     } catch (error) {
