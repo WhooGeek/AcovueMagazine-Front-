@@ -8,6 +8,7 @@ const AboutMeUpdatePage = ({ prevPath }) => {
     
     const [aboutMeContent, setAboutMeContent] = useState("");
     const [isLoading, setIsLoading] = useState(true);
+    const [imageUrls, setImageUrls] = useState([]);
     
     useEffect(() => {
         getAboutMeContent().then(res => {
@@ -51,7 +52,7 @@ const AboutMeUpdatePage = ({ prevPath }) => {
         <div style={{ padding: '40px 20px', maxWidth: '800px', margin: '0 auto' }}>
             <h1 style={{ marginBottom: '20px' }}>About Me 수정</h1>
 
-            <PostEditor content={aboutMeContent} setContent={setAboutMeContent} />
+            <PostEditor content={aboutMeContent} setContent={setAboutMeContent} setImageUrls={setImageUrls}/>
 
             <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'flex-end', gap: '10px' }}>
                 <button 
