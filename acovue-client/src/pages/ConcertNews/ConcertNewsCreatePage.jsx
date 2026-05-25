@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import PostEditor from '../../components/PostDetail/PostEditor';
-import axios from 'axios'; 
 import { useNavigate } from 'react-router-dom';
 import { postCreatePost } from '../../api/Post.api';
+import { getApiErrorMessage } from "../../api/ApiError";
 import "./ConcertNewsCreatePage.css";
 
 const extractFirstImageUrl = (htmlContent) => {
@@ -50,7 +50,7 @@ const ConcertNewsCreatePage = () => {
 
         } catch (error) {
             console.error("글 등록 실패:", error);
-            alert("글 등록 중 오류가 발생했습니다.");
+            alert(getApiErrorMessage(error, "글 등록 중 오류가 발생했습니다."));
         }
     };
 

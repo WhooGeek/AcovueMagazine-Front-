@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { putComment, deleteComment, postComment } from "../../api/Comment.api";
+import { getApiErrorMessage } from "../../api/ApiError";
 import "./PostDetailComments.css"; // CSS 파일 import 확인
 
 export default function CommentItem({ comment, postId, currentUser, onRefresh, isReply, parentSeqForReply }) {
@@ -18,8 +19,8 @@ export default function CommentItem({ comment, postId, currentUser, onRefresh, i
       await putComment(postId, comment.commentSeq, { commentContent: editContent });
       setIsEditing(false);
       onRefresh(); 
-    } catch (err) {
-      alert("댓글 수정 실패");
+    } catch (error) {
+      alert(getApiErrorMessage(error, "댓글 수정 중 오류가 발생했습니다. 다시 시도해주세요."));
     }
   };
 
@@ -28,8 +29,8 @@ export default function CommentItem({ comment, postId, currentUser, onRefresh, i
       try {
         await deleteComment(postId, comment.commentSeq);
         onRefresh();
-      } catch (err) {
-        alert("댓글 삭제 실패");
+      } catch (error) {
+        alert(getApiErrorMessage(error, "댓글 삭제 중 오류가 발생했습니다. 다시 시도해주세요."));
       }
     }
   };
@@ -45,8 +46,8 @@ export default function CommentItem({ comment, postId, currentUser, onRefresh, i
       setReplyContent("");
       setIsReplying(false);
       onRefresh();
-    } catch (err) {
-      alert("답글 등록 실패");
+    } catch (error) {
+      alert(getApiErrorMessage(error, "답글 등록 중 오류가 발생했습니다. 다시 시도해주세요."));
     }
   };
 

@@ -3,6 +3,7 @@ import "./PostDetailActions.css"
 import { postPostLikeToggle } from "../../api/Like.api"
 import { Heart, MessageCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { getApiErrorMessage } from "../../api/ApiError";
 import LoginRequiredModal from "../Common/LoginRequiredModal";
 
 export default function PostDetailActions({ 
@@ -42,7 +43,7 @@ export default function PostDetailActions({
       }
     } catch (error) {
       console.error("좋아요 토글 중 오류 발생:", error);
-      alert("좋아요 처리 중 오류가 발생했습니다. 다시 시도해주세요.");
+      alert(getApiErrorMessage(error, "좋아요 처리 중 오류가 발생했습니다. 다시 시도해주세요."));
     }
   };
 

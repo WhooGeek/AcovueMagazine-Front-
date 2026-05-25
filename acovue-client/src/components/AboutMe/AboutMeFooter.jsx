@@ -12,7 +12,6 @@ export default function AboutMeFooter(){
 
     const handleEdit = () => {
         const updatePath = `/about_me/update`;
-        console.log("Navigating to:", updatePath);
         navigate(updatePath);
     };
 

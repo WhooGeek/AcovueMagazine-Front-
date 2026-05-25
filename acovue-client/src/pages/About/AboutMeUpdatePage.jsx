@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { getAboutMeContent, putAboutMeContent } from "../../api/AboutMe.api";
+import { getApiErrorMessage } from "../../api/ApiError";
 import PostEditor from "../../components/PostDetail/PostEditor.jsx";
 
 const AboutMeUpdatePage = ({ prevPath }) => {
@@ -40,7 +41,7 @@ const AboutMeUpdatePage = ({ prevPath }) => {
             navigate(prevPath);
         }catch (error) {
             console.error("Failed to update post:", error);
-            alert("게시물 수정에 실패했습니다. 다시 시도해주세요.");
+            alert(getApiErrorMessage(error, "게시물 수정에 실패했습니다. 다시 시도해주세요."));
         }
     };
 

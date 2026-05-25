@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./PostActionButton.css";
 import { deletePost } from "../../api/Post.api";
+import { getApiErrorMessage } from "../../api/ApiError";
 
 const PostActionButton = ({ postId, postCategory}) => {
     const navigate = useNavigate();
@@ -14,7 +15,6 @@ const PostActionButton = ({ postId, postCategory}) => {
     const handleEdit = () => {
         const categoryPath = getCategoryPath(postCategory);
         const updatePath = `/${categoryPath}/${postId}/update`;
-        console.log("Navigating to:", updatePath);
         navigate(updatePath);
     };
 
@@ -27,6 +27,7 @@ const PostActionButton = ({ postId, postCategory}) => {
                 navigate(`/${categoryPath}?page=1&limit=5&type=${postCategory}`);
             } catch (error) {
                 console.error("게시물 삭제 중 오류 발생:", error);
+                alert(getApiErrorMessage(error, "게시물 삭제 중 오류가 발생했습니다. 다시 시도해주세요."));
             }
         }
     };

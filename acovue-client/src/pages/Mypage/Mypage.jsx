@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 // 1. API 함수 import 추가
 import { getMypageContent, putUpdateNickname } from '../../api/Mypage.api'; 
 import { putLogout } from "../../api/Login.api";
+import { getApiErrorMessage } from "../../api/ApiError";
 import LoadingSkeleton from "../../components/Common/LoadingSkeleton";
 import PageState from "../../components/Common/PageState";
 import './Mypage.css';
@@ -19,7 +20,6 @@ export default function Mypage() {
     const fetchMyInfo = async () => {
       try {
         const response = await getMypageContent(); 
-        console.log("서버 응답:", response);
         const memberData = response.data?.data || response.data; 
         setMember(memberData);
       } catch (error) {
@@ -55,7 +55,7 @@ export default function Mypage() {
       alert("닉네임이 변경되었습니다.");
     } catch (error) {
       console.error("닉네임 변경 실패:", error);
-      alert("닉네임 변경에 실패했습니다.");
+      alert(getApiErrorMessage(error, "닉네임 변경에 실패했습니다."));
     }
   };
 
@@ -140,10 +140,14 @@ export default function Mypage() {
             </button>
           )}
           
-          <button className="btn-logout" onClick={() => {
-            putLogout();
-            alert("로그아웃 되었습니다.");
-            window.location.href = "/login";
+          <button className="btn-logout" onClick={async () => {
+            try {
+              await putLogout();
+              alert("로그아웃 되었습니다.");
+              window.location.href = "/login";
+            } catch (error) {
+              alert(getApiErrorMessage(error, "로그아웃에 실패했습니다."));
+            }
           }}>로그아웃</button>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { postLogin } from "../../api/Login.api";
+import { getApiErrorMessage } from "../../api/ApiError";
 import { Link } from "react-router-dom";
 import "./LoginPage.css";
 
@@ -21,7 +22,7 @@ export default function AdminLoginPage() {
         window.location.href = "/";
       }
     } catch (error) {
-      alert("관리자 계정 정보를 확인해주세요.");
+      alert(getApiErrorMessage(error, "관리자 계정 정보를 확인해주세요."));
     }
   };
 
