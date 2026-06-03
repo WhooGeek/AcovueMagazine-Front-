@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import "./PostActionButton.css";
 
 const AboutMeActionButton = ({}) => {
@@ -8,7 +7,6 @@ const AboutMeActionButton = ({}) => {
 
     const handleEdit = () => {
         const updatePath = `/aboutme/update`;
-        console.log("Navigating to:", updatePath);
         navigate(updatePath);
     };
 

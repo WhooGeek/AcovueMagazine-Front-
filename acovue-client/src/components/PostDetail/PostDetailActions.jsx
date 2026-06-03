@@ -3,7 +3,9 @@ import "./PostDetailActions.css"
 import { postPostLikeToggle } from "../../api/Like.api"
 import { Heart, MessageCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import LoginRequiredModal from "../Common/LoginRequiredModal";
+import { getApiErrorMessage } from "../../api/ApiError";
+import AppModal from "../Common/AppModal";
+import { useToast } from "../Common/ToastProvider";
 
 export default function PostDetailActions({ 
   post, 
@@ -12,10 +14,11 @@ export default function PostDetailActions({
   isLiked = false,
   isLoggedIn = false}) {
   const navigate = useNavigate();
-
+  const { showToast } = useToast();
   const [likeCount, setLikeCount] = useState(postLikes);
   const [liked, setLiked] = useState(isLiked);
   const [showLoginModal, setShowLoginModal] = useState(false);
+  
 
   // props가 변경되면 state도 업데이트 (데이터 로딩 시점 차이 해결)
   useEffect(() => {
@@ -42,7 +45,7 @@ export default function PostDetailActions({
       }
     } catch (error) {
       console.error("좋아요 토글 중 오류 발생:", error);
-      alert("좋아요 처리 중 오류가 발생했습니다. 다시 시도해주세요.");
+      showToast(getApiErrorMessage(error, "좋아요 처리 중 오류가 발생했습니다. 다시 시도해주세요."), "error");
     }
   };
 
@@ -64,17 +67,18 @@ export default function PostDetailActions({
         </span>
       </div>
 
-      <LoginRequiredModal
+      <AppModal
         open={showLoginModal}
-        title="로그인이 필요합니다!"
-        description="좋아요 기능은 로그인 후 사용할 수 있습니다."
-        cancelText="닫기"
-        confirmText="로그인하러 가기"
-        onCancel={() => setShowLoginModal(false)}
+        title="로그인 필요"
+        message="로그인이 필요합니다. 로그인 페이지로 이동하시겠습니까?"
+        confirmText="이동"
+        cancelText="취소"
+        showCancel={true}
         onConfirm={() => {
           setShowLoginModal(false);
           navigate("/login");
         }}
+        onCancel={() => setShowLoginModal(false)}
       />
     </>
   );

@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { getAboutMeContent, putAboutMeContent } from "../../api/AboutMe.api";
+import { getApiErrorMessage } from "../../api/ApiError";
+import { useToast } from "../../components/Common/ToastProvider";
 import PostEditor from "../../components/PostDetail/PostEditor.jsx";
 
 const AboutMeUpdatePage = ({ prevPath }) => {
     const navigate = useNavigate();
+    const { showToast } = useToast();
     
     const [aboutMeContent, setAboutMeContent] = useState("");
     const [isLoading, setIsLoading] = useState(true);
@@ -25,7 +28,7 @@ const AboutMeUpdatePage = ({ prevPath }) => {
         
 
         if(!aboutMeContent){
-            alert("내용을 입력해주세요.");
+            showToast("내용을 입력해주세요.", "info");
             return;
         }
 
@@ -36,11 +39,11 @@ const AboutMeUpdatePage = ({ prevPath }) => {
 
             await putAboutMeContent(updateData);
 
-            alert("게시물이 성공적으로 수정되었습니다.");
+            showToast("게시물이 성공적으로 수정되었습니다.", "success");
             navigate(prevPath);
         }catch (error) {
             console.error("Failed to update post:", error);
-            alert("게시물 수정에 실패했습니다. 다시 시도해주세요.");
+            showToast(getApiErrorMessage(error, "게시물 수정에 실패했습니다. 다시 시도해주세요."), "error");
         }
     };
 

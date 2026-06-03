@@ -6,6 +6,7 @@ import "./Header.css";
 import { Menu, UserRound } from "lucide-react"
 import { putLogout } from "../../api/Login.api";
 import { useAuth } from "../../context/AuthContext";
+import AppModal from "../Common/AppModal";
 
 export default function Header() {
 
@@ -13,7 +14,7 @@ export default function Header() {
   const { isLoggedIn, member, logout } = useAuth();
 
   const [showDropdown, setShowDropdown] = useState(false); // 드롭다운 메뉴 표시 상태 관리
-  const [showModal, setShowModal] = useState(false); // 로그아웃 모달 표시 상태 관리
+  const [showModal, setShowModal] = useState(false); 
 
   const getInitial = (name) => {
     if (!name) return "U";
@@ -115,22 +116,16 @@ export default function Header() {
       </nav>
 
       {/* 로그아웃 확인 모달 */}
-      {showModal && (
-        <div className="modal-overlay">
-          <div className="modal-content">
-            <img src={logoImage} alt="Acovue Logo" className="modal-logo" />
-            <p className="modal-message">로그아웃 하시겠습니까?</p>
-            <div className="modal-buttons">
-              <button className="btn-confirm" onClick={handleConfirmLogout}>
-                확인
-              </button>
-              <button className="btn-cancel" onClick={() => setShowModal(false)}>
-                취소
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      <AppModal
+        open={showModal}
+        title="로그아웃"
+        message="로그아웃 하시겠습니까?"
+        confirmText="로그아웃"
+        cancelText="취소"
+        showCancel={true}
+        onConfirm={handleConfirmLogout}
+        onCancel={() => setShowModal(false)}
+      />
 
     </header>
   );
