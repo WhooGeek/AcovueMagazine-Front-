@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getPostDetail, putUpdatePost } from "../../api/Post.api";
 import { getApiErrorMessage } from "../../api/ApiError";
+import { useToast } from "../../components/Common/ToastProvider";
 import PostEditor from "../../components/PostDetail/PostEditor.jsx";
 
 const extractFirstImageUrl = (htmlContent) => {
@@ -16,6 +17,7 @@ const extractFirstImageUrl = (htmlContent) => {
 const CommonUpdatePage = ({ category, boardTitle, prevPath }) => {
     const { postId } = useParams();
     const navigate = useNavigate();
+    const { showToast } = useToast();
     
     const [postTitle, setPostTitle] = useState("");
     const [postContent, setPostContent] = useState("");
@@ -41,7 +43,7 @@ const CommonUpdatePage = ({ category, boardTitle, prevPath }) => {
 
     const handleUpdate = async () => {
         if(!postTitle || !postContent){
-            alert("제목과 내용을 모두 입력해주세요.");
+            showToast("제목과 내용을 모두 입력해주세요.", "info");
             return;
         }
 
@@ -59,11 +61,11 @@ const CommonUpdatePage = ({ category, boardTitle, prevPath }) => {
 
             await putUpdatePost(postId, updateData);
 
-            alert("게시물이 성공적으로 수정되었습니다.");
+            showToast("게시물이 성공적으로 수정되었습니다.", "success");
             navigate(prevPath);
         }catch (error) {
             console.error("Failed to update post:", error);
-            alert(getApiErrorMessage(error, "게시물 수정에 실패했습니다. 다시 시도해주세요."));
+            showToast(getApiErrorMessage(error, "게시물 수정에 실패했습니다. 다시 시도해주세요."), "error");
         }
     };
 

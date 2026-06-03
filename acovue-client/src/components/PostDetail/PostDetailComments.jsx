@@ -20,7 +20,7 @@ export default function PostDetailComments({ comments, post, currentUser, onRefr
               isReply={false} 
             />
 
-            {/* 대댓글(children)이 있다면 렌더링 */}
+            {/* 대댓글 렌더링 */}
             {parentComment.children && parentComment.children.length > 0 && (
               parentComment.children.map((childComment) => (
                 <CommentItem 

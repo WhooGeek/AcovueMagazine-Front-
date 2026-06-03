@@ -1,10 +1,12 @@
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./PostWriteButton.css";
+import { useToast } from "./ToastProvider";
 
 const CommonWriteButton = () => {
     const navigate = useNavigate();
     const location = useLocation(); 
+    const { showToast } = useToast();
 
     // 로그인 체크
     const isLoggedIn = !!localStorage.getItem("accessToken");
@@ -25,7 +27,7 @@ const CommonWriteButton = () => {
         } else if (currentPath.includes('/guide')){
             navigate('/guide/create');
         } else {
-            alert("글 작성이 불가능한 페이지입니다.");
+            showToast("글 작성이 불가능한 페이지입니다.", "info");
         }
     };
 

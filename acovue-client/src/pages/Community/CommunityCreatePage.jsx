@@ -3,6 +3,7 @@ import PostEditor from '../../components/PostDetail/PostEditor';
 import { useNavigate } from 'react-router-dom';
 import { postCreatePost } from '../../api/Post.api';
 import { getApiErrorMessage } from "../../api/ApiError";
+import { useToast } from "../../components/Common/ToastProvider";
 import "./CommunityCreatePage.css"
 
 const extractFirstImageUrl = (htmlContent) => {
@@ -15,17 +16,19 @@ const extractFirstImageUrl = (htmlContent) => {
 };
 
 const CommunityCreatePage = () => {
+    const { showToast } = useToast();
    
     const [title, setTitle] = useState(""); 
     const [content, setContent] = useState("");
     const [imageUrls, setImageUrls] = useState([]); 
+
     
     const navigate = useNavigate();
 
     const handleSubmit = async () => {
         // 유효성 검사 (제목이나 내용이 비었는지 확인)
         if (!title || !content) {
-            alert("제목과 내용을 모두 입력해주세요.");
+            showToast("제목과 내용을 모두 입력해주세요.", "info");
             return;
         }
 
@@ -43,12 +46,12 @@ const CommunityCreatePage = () => {
 
             await postCreatePost(postData);
             
-            alert("글이 등록되었습니다!");
+            showToast("글이 등록되었습니다!", "success");
             navigate('/community?page=1&limit=5&type=COMMUNITY');
 
         } catch (error) {
             console.error("글 등록 실패:", error);
-            alert(getApiErrorMessage(error, "글 등록 중 오류가 발생했습니다."));
+            showToast(getApiErrorMessage(error, "글 등록 중 오류가 발생했습니다."), "error");
         }
 
         
@@ -86,6 +89,7 @@ const CommunityCreatePage = () => {
                     등록하기
                 </button>
             </div>
+
         </div>
     );
 };

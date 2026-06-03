@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { postLogin } from "../../api/Login.api";
 import { getApiErrorMessage } from "../../api/ApiError";
 import { Link } from "react-router-dom";
+import { useToast } from "../../components/Common/ToastProvider";
 import "./LoginPage.css";
 
 export default function AdminLoginPage() {
+  const { showToast } = useToast();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -22,7 +24,7 @@ export default function AdminLoginPage() {
         window.location.href = "/";
       }
     } catch (error) {
-      alert(getApiErrorMessage(error, "관리자 계정 정보를 확인해주세요."));
+      showToast(getApiErrorMessage(error, "관리자 계정 정보를 확인해주세요."), "error");
     }
   };
 

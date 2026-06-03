@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from 'react';
-// 1. API 함수 import 추가
 import { getMypageContent, putUpdateNickname } from '../../api/Mypage.api'; 
 import { putLogout } from "../../api/Login.api";
 import { getApiErrorMessage } from "../../api/ApiError";
 import LoadingSkeleton from "../../components/Common/LoadingSkeleton";
 import PageState from "../../components/Common/PageState";
 import './Mypage.css';
+import { useToast } from '../../components/Common/ToastProvider';
 
 export default function Mypage() {
+  const { showToast } = useToast();
   const [member, setMember] = useState(null); 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-
-  // ⭐️ 2. 닉네임 수정 관련 State 추가
   const [isEditing, setIsEditing] = useState(false); // 수정 모드 여부
   const [editNickname, setEditNickname] = useState(""); // 입력 중인 닉네임
 
@@ -32,16 +31,14 @@ export default function Mypage() {
     fetchMyInfo();
   }, []);
 
-  // ⭐️ 3. 닉네임 수정 모드 켜기
   const startEditing = () => {
     setEditNickname(member.memberNickname); // 현재 닉네임을 인풋에 채워넣기
     setIsEditing(true); // 수정 모드 ON
   };
 
-  // ⭐️ 4. 닉네임 변경 요청 보내기
   const handleUpdateNickname = async () => {
     if (!editNickname.trim()) {
-      alert("닉네임을 입력해주세요.");
+      showToast("닉네임을 입력해주세요.", "info");
       return;
     }
 
@@ -52,10 +49,9 @@ export default function Mypage() {
       // 성공하면 화면(State)도 업데이트 (새로고침 없이 반영)
       setMember({ ...member, memberNickname: editNickname });
       setIsEditing(false); // 수정 모드 OFF
-      alert("닉네임이 변경되었습니다.");
+      showToast("닉네임이 변경되었습니다.", "success");
     } catch (error) {
-      console.error("닉네임 변경 실패:", error);
-      alert(getApiErrorMessage(error, "닉네임 변경에 실패했습니다."));
+      showToast(getApiErrorMessage(error, "닉네임 변경에 실패했습니다."), "error");
     }
   };
 
@@ -92,7 +88,6 @@ export default function Mypage() {
             <span className="info-value">{member.memberName}</span>
           </div>
 
-          {/* ⭐️ 5. 닉네임 부분: 수정 모드에 따라 다르게 보여주기 */}
           <div className="info-item">
             <span className="info-label">닉네임</span>
             
@@ -134,19 +129,13 @@ export default function Mypage() {
         </div>
 
         <div className="mypage-actions">
-          {!member.provider && (
-            <button className="btn-change-pw" onClick={() => alert("비밀번호 변경 기능 준비 중!")}>
-              비밀번호 변경
-            </button>
-          )}
-          
           <button className="btn-logout" onClick={async () => {
             try {
               await putLogout();
-              alert("로그아웃 되었습니다.");
+              showToast("로그아웃 되었습니다.", "success");
               window.location.href = "/login";
             } catch (error) {
-              alert(getApiErrorMessage(error, "로그아웃에 실패했습니다."));
+              showToast(getApiErrorMessage(error, "로그아웃 중 오류가 발생했습니다."), "error");
             }
           }}>로그아웃</button>
         </div>
