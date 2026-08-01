@@ -70,7 +70,6 @@ const GuideCreatePage = () => {
                 />
             </div>
             
-            {/* CKEditor 컴포넌트 */}
             <PostEditor 
                 content={content} 
                 setContent={setContent} 
