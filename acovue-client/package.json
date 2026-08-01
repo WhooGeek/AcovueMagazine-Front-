@@ -10,8 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@ckeditor/ckeditor5-build-classic": "^41.4.2",
-    "@ckeditor/ckeditor5-react": "^11.0.1",
     "@tiptap/extension-document": "^3.29.2",
     "@tiptap/extension-file-handler": "^3.29.2",
     "@tiptap/extension-highlight": "^3.29.2",
@@ -24,7 +22,6 @@
     "@tiptap/react": "^3.29.2",
     "@tiptap/starter-kit": "^3.29.2",
     "axios": "^1.13.2",
-    "ckeditor5": "^47.3.0",
     "jwt-decode": "^4.0.0",
     "lucide-react": "^0.577.0",
     "react": "^19.2.0",
